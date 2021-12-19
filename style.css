@@ -1,0 +1,22 @@
+input {
+    font-size: 20px;
+    padding: 4px 10px;
+}
+
+
+button {
+    background-color: lightgreen;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    color: white;
+}
+
+#askTask5,  #askTask6, #askTask7, #askTask81, #askTask82{
+    width: 700px;
+}
