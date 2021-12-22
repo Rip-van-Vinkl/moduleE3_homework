@@ -5,49 +5,36 @@ var output2 = document.querySelector("#answerTask2");
 
 let answer2 = '';
 
-function handleClick2() {
-  if (input2.value === null || input2.value === '' || input2.value.split(" ").length - 1 === input2.value.length) { // 0 - чётное число
-    answer2 = 'boolean';
-  } else if (isNaN(+input2.value)) {
-    answer2 = 'string';
-  } else if (+input2.value) {
-    answer2 = 'number';
-  } else {
-    answer2 = 'Хрен его знает, что за Х.. ты ввёл(а)!'; // а что ещё осталось? особенно после унарного плюса из того, что можно принять из промпта
-  }
+// primeNumber1 сначала отсеивает явно неверные данные, а потом отсылает к primeNumber2, которая собственно и определяет простое число
 
+function primeNumber1() {
+  if (input2.value <= 0 || input2.value > 1000 || isNaN(+input2.value) || !Number.isInteger(+input2.value)) {
+    answer2 = "Данные неверны";
+  } else if (input2.value == 1) {
+    answer2 = "1 не является простым числом, а скорее формирует свою специальную категорию — «единицу»";
+  } else {
+    primeNumber2(input2.value);
+  }
   output2.textContent = answer2;
   input2.value = '';
 }
 
+function primeNumber2(namber) {
+  let i = 2;
+  let j = 0;
+  while (i <= namber) {
+    if (namber % i === 0) {
+      j++;
+    }
+    i++;
+  }
 
-button2.addEventListener('click', handleClick2);
+  if (j == 1) {
+    answer2 = `Веденое число: ${namber} - является простым`;
+  } else {
+    answer2 = `Веденое число: ${namber} - не относится к категории простых чисел`;
+  }
+  return (answer2);
+}
 
-
-
-
-
-// сначала проверяет на отмену ввода, ввод без значения и строку из пробелов - выдаёт boolean
-// потом на строку, излишняя на число и последняя - на что-то загадочное
-/*
-let answer = prompt();
-
-if (answer === null || answer === '' || answer.split(" ").length-1 === answer.length) {
-  console.log('boolean')
-} else if (isNaN(answer)) {
-  console.log('string')
-} else if (+answer) {
-  console.log('number')
-} else {
-  console.log('Хрен его знает, что ты ввёл(а)!')
-} 
-*/
-
-
-
-
-
-
-
-
-  
+button2.addEventListener('click', primeNumber1);

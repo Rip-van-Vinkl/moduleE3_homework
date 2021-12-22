@@ -1,33 +1,39 @@
 const button5 = document.querySelector('#btnTask5');
-var input5 = document.querySelector("#askTask5");
-var output51 = document.querySelector("#answerTask51");
-var output52 = document.querySelector("#answerTask52");
-let answer51 = '';
+var input51 = document.querySelector("#askTask51");
+var input52 = document.querySelector("#askTask52");
+var output5 = document.querySelector("#answerTask5");
+
 
 function handleClick5() {
 
-  answer51 = (input5.value.split(' '));
+    let input51Value = input51.value;
+    let input52Value = input52.value;
 
-  // очистим массив от лишних пробелов
-  let answer51New = [];
-  answer51.forEach(function (item) {
-    if (item !== "") {
-      answer51New.push(item);
+    if (checkingValue5(input51Value)) {
+        if (checkingValue5(input52Value)) {
+            output5.textContent = exponentiation5(input51Value, input52Value);
+        } else {
+            output5.textContent = 'Введено неверное значение';
+        }
+    } else {
+        output5.textContent = 'Введено неверное значение';
     }
-  });
-
-  // сформируем массив для вывода отдельных элементов, т.к. я не знаю, как это сделать по-другому
-  let answer51New2 = [];
-  let i = 0;
-  answer51New.forEach(function (item) {
-    i++;
-    answer51New2.push(' №' + i + ' элемент массива = ' + item);
-  });
-
-  // выводим результаты
-  output51.textContent = 'количество элементов массива = ' + answer51New.length;
-  output52.textContent = answer51New2;
-
 }
+
+
+function checkingValue5(value) {
+    if (value === null || value === '' || value.split(" ").length - 1 === value.length) {
+        return (false);
+    } else if (typeof (+value) == "number") {
+        if (isNaN(+value)) {
+            return (false);
+        } else {
+            return (value);
+        }
+    }
+}
+
+
+let exponentiation5 = (arg1, arg2)=> (arg1**arg2);
 
 button5.addEventListener('click', handleClick5);

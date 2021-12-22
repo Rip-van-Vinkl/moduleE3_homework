@@ -1,6 +1,7 @@
 input {
     font-size: 20px;
     padding: 4px 10px;
+    width: 700px;
 }
 
 
@@ -17,6 +18,6 @@ button:hover {
     color: white;
 }
 
-#askTask5,  #askTask6, #askTask7, #askTask81, #askTask82{
-    width: 700px;
+#askTask31, #askTask32, #askTask41, #askTask42, #askTask51, #askTask52 {
+    width: 300px;
 }
